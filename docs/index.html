@@ -13,6 +13,32 @@
       font-size: 2em;
       color: #333;
     }
+    /* コードブロックのスタイル */
+    pre {
+      background-color: #f4f4f4;
+      padding: 15px;
+      border-radius: 5px;
+      text-align: left;
+      max-width: 800px;
+      margin: 20px auto;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      color: #c7254e;
+      background-color: #f9f2f4;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    /* 見出しのスタイル */
+    h2 {
+      margin-top: 50px;
+      color: #2c3e50;
+    }
+    h3 {
+      margin-top: 30px;
+      color: #34495e;
+    }
   </style>
 </head>
 <body>
@@ -20,7 +46,7 @@
   <div id="countdown">Loading...</div>
 
   <script>
-    // カウントダウンのターゲット日付を設定（例: 2024年12月31日）
+    // カウントダウンのターゲット日付を設定（例: 2024年11月9日）
     const targetDate = new Date('2024-11-09T23:59:59');
 
     function updateCountdown() {
@@ -47,5 +73,40 @@
     // 1秒ごとに更新
     const interval = setInterval(updateCountdown, 1000);
   </script>
+
+  <!-- 追加する文言とコード -->
+  <h2>1. ブロック（Block）とは何か？</h2>
+  <h3>ブロックの基本概念</h3>
+  <p>ブロックは、Rubyにおけるコードの一部分で、メソッドに渡すことができる匿名のコードの塊です。ブロックは、特定の処理をメソッドに委譲したり、繰り返し処理や条件分岐をカスタマイズする際に使用されます。</p>
+
+  <h3>ブロックの構文</h3>
+  <p>ブロックは主に以下の2つの構文で記述されます：</p>
+
+  <h4>do...end構文</h4>
+  <pre><code>[1, 2, 3].each do |number|
+  puts number
+end
+  </code></pre>
+
+  <h4>{...}構文</h4>
+  <pre><code>[1, 2, 3].each { |number| puts number }
+  </code></pre>
+
+  <p>両者は基本的に同じ意味を持ちますが、慣習としてdo...endは複数行のブロックに、{...}は一行のブロックに使われることが多いです。</p>
+
+  <h2>2. yieldとは何か？</h2>
+  <p><strong>yield</strong>は、メソッド内でブロックを呼び出すためのキーワードです。yieldを使うことで、メソッドに渡されたブロックを実行し、そのブロックに引数を渡すことができます。</p>
+
+  <h3>yieldの基本的な使用方法</h3>
+  <pre><code>def greet
+  yield "Hello"
+end
+
+greet do |message|
+  puts message + ", world!"
+end
+# 出力: Hello, world!
+  </code></pre>
+  <p>この例では、greetメソッドがyieldを呼び出し、ブロックに"Hello"という引数を渡しています。ブロック内では、この引数を受け取り、出力しています。</p>
 </body>
 </html>
